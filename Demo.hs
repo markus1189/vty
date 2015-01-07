@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Main where
 
 import Graphics.Vty
@@ -79,4 +80,3 @@ handleNextEvent = ask >>= liftIO . nextEvent >>= handleEvent
         handleEvent e               = do
             modify $ (<|) (show e) >>> Seq.take eventBufferSize
             return $ e == EvKey KEsc []
-
